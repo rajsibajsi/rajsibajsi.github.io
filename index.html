@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luka Reisman - Software Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: calc(100vh - 40px);
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            position: relative;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: #ecf0f1;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #bdc3c7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .contact-info {
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            width: 20px;
+            margin-right: 15px;
+            color: #3498db;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #3498db;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skills-compact {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .skills-compact p {
+            margin-bottom: 12px;
+            color: #ecf0f1;
+        }
+
+        .skills-compact strong {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .language-level {
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .hobbies-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hobby-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #ecf0f1;
+        }
+
+        .hobby-item i {
+            width: 20px;
+            margin-right: 12px;
+            color: #3498db;
+            font-size: 16px;
+        }
+
+        .main-content {
+            padding: 40px 50px;
+            background: white;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .title {
+            font-size: 20px;
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .summary {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            padding-left: 20px;
+            border-left: 2px solid #ecf0f1;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .company {
+            font-size: 16px;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .job-duration {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 500;
+            background: #ecf0f1;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .job-description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .job-description ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+        }
+
+        .tech-skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .skill-row:last-child {
+            border-bottom: none;
+        }
+
+        .skill-label {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 200px;
+            flex-shrink: 0;
+            font-size: 15px;
+        }
+
+        .skill-list {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .university {
+            font-size: 16px;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .education-duration {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .project {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .resume-container {
+                grid-template-columns: 1fr;
+                border-radius: 10px;
+            }
+
+            .sidebar {
+                padding: 30px 20px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 32px;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-duration {
+                margin-top: 5px;
+            }
+
+            .skill-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .skill-label {
+                min-width: auto;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: none;
+                min-height: auto;
+            }
+
+            .sidebar {
+                background: #2c3e50;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <aside class="sidebar">
+            <div class="profile-photo">
+                <img src="./luka.jpeg" alt="Luka Reisman">
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Ptuj, Slovenia</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/luka-reisman-025b38157/" target="_blank">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/rajsibajsi/color-splash" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Languages</h3>
+                <div class="language-item">
+                    <span>English</span>
+                    <span class="language-level">Professional</span>
+                </div>
+                <div class="language-item">
+                    <span>German</span>
+                    <span class="language-level">Working</span>
+                </div>
+                <div class="language-item">
+                    <span>Slovenian</span>
+                    <span class="language-level">Native</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Hobbies</h3>
+                <div class="hobbies-list">
+                    <div class="hobby-item">
+                        <i class="fas fa-mountain"></i>
+                        <span>Rock Climbing</span>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-hiking"></i>
+                        <span>Hiking</span>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>Cooking</span>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-guitar"></i>
+                        <span>Guitar</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1 class="name">Luka Reisman</h1>
+                <h2 class="title">Software Developer</h2>
+            </header>
+
+            <section class="section">
+                <h2 class="section-title">Summary</h2>
+                <p class="summary">
+                    Software developer with 7+ years of experience delivering <strong>scalable, high-performance web services</strong> and <strong>data platforms</strong>. Expertise in <strong>RESTful APIs, microservices, ETL pipelines, PostgreSQL, TypeScript, Go, PHP, Kubernetes, Redis, Kafka, RabbitMQ, DuckDB, Parquet, Apache Arrow, OAuth, API integrations, CI/CD, automated testing, and observability</strong>. Proven track record in maintaining legacy systems, optimizing backend performance, and handling high-traffic production applications. Skilled in <strong>unit, integration, and end-to-end (e2e) testing</strong>, CI/CD workflows, logging, and system monitoring with Elasticsearch, Prometheus, and Grafana.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="tech-skills-grid">
+                    <div class="skill-row">
+                        <span class="skill-label">Programming & Scripting:</span>
+                        <span class="skill-list">TypeScript, Go (Golang), PHP, JavaScript, SQL</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Web & API Development:</span>
+                        <span class="skill-list">REST APIs, RESTful Web Services, Microservices Architecture, API Integration, Third-Party API Integration, OAuth 1.0/2.0</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Databases & DE:</span>
+                        <span class="skill-list">PostgreSQL, Redis, DuckDB, Apache Parquet, Apache Arrow, ETL Pipelines, Data Integration, Data Transformation, SQL Query Optimization</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Cloud & DevOps:</span>
+                        <span class="skill-list">Kubernetes, Docker, Horizontal Pod Autoscaling (HPA), CI/CD Pipelines, GitHub Actions, Continuous Integration, Continuous Deployment</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Message Brokers:</span>
+                        <span class="skill-list">Apache Kafka, RabbitMQ</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Testing & QA:</span>
+                        <span class="skill-list">Unit Testing, Integration Testing, End-to-End Testing (E2E), Jest Testing Framework, Automated Testing, Test-Driven Development</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Monitoring:</span>
+                        <span class="skill-list">Elasticsearch, Prometheus, Grafana, Application Monitoring, System Logging, Performance Metrics, Alert Management</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">AI:</span>
+                        <span class="skill-list">Anomaly Detection Systems, Real-Time Data Analysis, AI-Powered Monitoring</span>
+                    </div>
+
+                    <div class="skill-row">
+                        <span class="skill-label">Tools & Practices:</span>
+                        <span class="skill-list">Git Version Control, Agile Software Development, Scrum Methodology, Code Reviews, Performance Optimization, Backend Development, Scalable Architecture</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Backend Developer</div>
+                            <div class="company">Databox, Ptuj, Slovenia</div>
+                        </div>
+                        <div class="job-duration">May 2019 – Present</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Designed, built, and maintained <strong>high-traffic, scalable REST APIs and microservices</strong> handling up to <strong>2,000,000 requests per day</strong>.</li>
+                            <li>Integrated <strong>3rd-party APIs</strong> into the platform and maintained their <strong>connections and data flows</strong>, ensuring reliable functionality.</li>
+                            <li>Built and maintained <strong>data platform services for ETL pipelines</strong>, processing large datasets with <strong>DuckDB, Parquet, and Apache Arrow</strong>.</li>
+                            <li>Designed and implemented an <strong>AI-powered anomaly detection system</strong> for ETL pipeline monitoring, leveraging AI to identify data spikes and anomalies in real-time, significantly improving data quality assurance.</li>
+                            <li>Worked extensively with <strong>authentication mechanisms</strong> including OAuth 1.0/2.0 and API key authentication.</li>
+                            <li>Deployed and managed <strong>Kubernetes-based microservices</strong>, implementing <strong>custom Horizontal Pod Autoscaling metrics</strong> for optimized scaling under load.</li>
+                            <li>Optimized backend performance: <strong>reduced processing time by up to 40%</strong>, optimized SQL queries, and improved system reliability.</li>
+                            <li>Developed and maintained <strong>unit, integration, and e2e tests</strong> to ensure code quality and system stability.</li>
+                            <li>Wrote and maintained <strong>GitHub Actions workflows</strong> for CI/CD automation.</li>
+                            <li>Implemented <strong>logging, monitoring, and alerting</strong> using Elasticsearch, Prometheus, and Grafana.</li>
+                            <li>Mentored interns and junior developers, conducted code reviews, and enforced best coding practices.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Intern</div>
+                            <div class="company">Databox, Ptuj, Slovenia</div>
+                        </div>
+                        <div class="job-duration">Aug 2018 – May 2019</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Maintained and enhanced <strong>legacy systems</strong> built with TypeScript and PHP.</li>
+                            <li>Resolved <strong>support tickets and production issues</strong>, ensuring system reliability.</li>
+                            <li>Assisted with <strong>3rd-party API integration</strong> and incremental platform improvements.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Web Developer</div>
+                            <div class="company">ORG. TEND d.o.o., Maribor, Slovenia</div>
+                        </div>
+                        <div class="job-duration">Jun 2017 – Jul 2018</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed and maintained client websites using <strong>CMS frameworks</strong>, ensuring responsive, functional, and optimized pages.</li>
+                            <li>Designed and implemented a <strong>custom e-commerce plugin for ModX CMS</strong>, adding store functionality.</li>
+                            <li>Developed and customized <strong>interactive website features and templates</strong>, implementing client-specific functionality, layouts, and frontend behavior with HTML, CSS, JavaScript, and CMS templates.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="degree">Bachelor's Degree, Computer Science</div>
+                    <div class="university">Faculty of Electrical Engineering and Computer Science, University of Maribor</div>
+                    <div class="education-duration">2014 – 2018</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Open-Source Project</h2>
+                <div class="project">
+                    <div class="project-title">
+                        Color Splash – <a href="https://github.com/rajsibajsi/color-splash" class="project-link" target="_blank">GitHub Repository</a>
+                    </div>
+                    <div class="project-description">
+                        Open-source library for image color manipulation: preserving selected colors while converting others to grayscale. Includes <strong>real-time preview</strong>, caching, and <strong>optimized performance for web applications</strong>.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
