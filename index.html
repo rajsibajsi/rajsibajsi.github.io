@@ -407,9 +407,16 @@
         }
 
         @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
             body {
                 background: white;
                 padding: 0;
+                margin: 0;
             }
 
             .resume-container {
@@ -417,10 +424,143 @@
                 border-radius: 0;
                 max-width: none;
                 min-height: auto;
+                display: grid;
+                grid-template-columns: 280px 1fr;
+                page-break-inside: avoid;
             }
 
             .sidebar {
-                background: #2c3e50;
+                background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important;
+                color: white !important;
+                padding: 30px 20px;
+                page-break-inside: avoid;
+            }
+
+            .sidebar::before {
+                background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%) !important;
+            }
+
+            .profile-photo {
+                background: #ecf0f1 !important;
+                border: 4px solid rgba(255, 255, 255, 0.1) !important;
+                color: #bdc3c7 !important;
+            }
+
+            .contact-item i {
+                color: #3498db !important;
+            }
+
+            .contact-item a {
+                color: white !important;
+            }
+
+            .sidebar-section h3 {
+                color: #3498db !important;
+            }
+
+            .skills-compact strong {
+                color: #3498db !important;
+            }
+
+            .language-level {
+                color: #3498db !important;
+            }
+
+            .hobby-item i {
+                color: #3498db !important;
+            }
+
+            .hobby-item {
+                color: #ecf0f1 !important;
+            }
+
+            .skills-compact p {
+                color: #ecf0f1 !important;
+            }
+
+            .main-content {
+                padding: 30px 40px;
+                page-break-inside: avoid;
+            }
+
+            .section-title::after {
+                background: linear-gradient(90deg, #3498db, #2ecc71) !important;
+            }
+
+            .experience-item {
+                border-left: 2px solid #ecf0f1 !important;
+                page-break-inside: avoid;
+                margin-bottom: 25px;
+            }
+
+            .experience-item::before {
+                background: #3498db !important;
+            }
+
+            .education-item {
+                background: #f8f9fa !important;
+                border-left: 4px solid #2ecc71 !important;
+                page-break-inside: avoid;
+            }
+
+            .project {
+                background: #f8f9fa !important;
+                border-left: 4px solid #3498db !important;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .project-link {
+                color: #3498db !important;
+            }
+
+            .skill-row {
+                border-bottom: 1px solid #e8e8e8 !important;
+                page-break-inside: avoid;
+            }
+
+            .job-duration {
+                background: #ecf0f1 !important;
+            }
+
+            /* Ensure good page breaks */
+            .section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .experience-item {
+                break-inside: avoid;
+            }
+
+            .project {
+                break-inside: avoid;
+            }
+
+            /* Adjust font sizes for print */
+            .name {
+                font-size: 36px;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            /* Ensure links are visible in print */
+            a[href]:after {
+                content: "";
+            }
+
+            .contact-item a[href]:after {
+                content: "";
+            }
+
+            .project-link[href]:after {
+                content: "";
             }
         }
     </style>
